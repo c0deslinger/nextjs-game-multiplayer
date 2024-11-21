@@ -1,5 +1,4 @@
-import { useState, useEffect, MouseEvent } from "react";
-import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import { Socket } from "socket.io-client";
 import { useSocket } from "../../hooks/useSocket";
 import styles from "../../styles/Game.module.css";
@@ -15,7 +14,6 @@ interface User {
 const TOTAL_BOXES = 4;
 
 export default function Game() {
-  const router = useRouter();
   const socket: Socket | null = useSocket();
 
   const [username, setUsername] = useState<string>("");
@@ -79,8 +77,8 @@ export default function Game() {
 
   const getPlayersInBox = (boxIndex: number) => {
     return Object.entries(users)
-      .filter(([id, user]) => user.position === boxIndex && user.alive)
-      .map(([id, user]) => user.username);
+      .filter(([, user]) => user.position === boxIndex && user.alive)
+      .map(([, user]) => user.username);
   };
 
   return (
