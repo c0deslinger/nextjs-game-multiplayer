@@ -108,16 +108,16 @@ export default function Game() {
           </div>
           <div className={styles.header}>
             <h2>Timer: {timer} s</h2>
-            <div className={styles.scores}>
-              {Object.values(users).map((user, idx) => (
-                <div key={idx} className={styles.score}>
-                  {user.username}: {user.score}
-                </div>
-              ))}
-            </div>
           </div>
           <div className={styles.currentPlayer}>
             <h3>Playing as: {username}</h3>
+          </div>
+          <div className={styles.scores}>
+            {Object.values(users).map((user, idx) => (
+              <div key={idx} className={styles.score}>
+                {user.username}: {user.score}
+              </div>
+            ))}
           </div>
           <div
             style={{
